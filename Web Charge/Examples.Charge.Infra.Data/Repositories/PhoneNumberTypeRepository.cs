@@ -17,5 +17,7 @@ namespace Examples.Charge.Infra.Data.Repositories
         }
 
         public async Task<IEnumerable<PhoneNumberType>> FindAllAsync() => await Task.Run(() => _context.PhoneNumberType);
+
+        public PhoneNumberType Find(int id) => _context.PhoneNumberType.Find(id);
     }
 }

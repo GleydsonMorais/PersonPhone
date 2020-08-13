@@ -11,6 +11,8 @@ using Swashbuckle.AspNetCore.Swagger;
 using System;
 using System.IO;
 using System.Linq;
+using Examples.Charge.Domain.Aggregates.PersonAggregate.Interfaces;
+using Examples.Charge.Domain.Aggregates.PersonAggregate;
 
 namespace Examples.Charge.API
 {
@@ -33,6 +35,11 @@ namespace Examples.Charge.API
             });
             NativeInjector.Setup(services);
             services.AddAutoMapper();
+
+            // Add application services.
+            services.AddTransient<IPersonService, PersonService>();
+            services.AddTransient<IPersonPhoneService, PersonPhoneService>();
+            services.AddTransient<IPhoneNumberTypeService, PhoneNumberTypeService>();
 
             services.AddSwaggerGen(options =>
             {

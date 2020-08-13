@@ -18,5 +18,7 @@ namespace Examples.Charge.Domain.Aggregates.PersonAggregate
         }
 
         public async Task<List<PhoneNumberType>> FindAllAsync() => (await _phoneNumberTypeRepository.FindAllAsync()).ToList();
+
+        public PhoneNumberType Find(int id) => _phoneNumberTypeRepository.Find(id);
     }
 }

@@ -17,5 +17,6 @@ namespace Examples.Charge.Infra.Data.Repositories
         }
 
         public async Task<IEnumerable<Person>> FindAllAsync() => await Task.Run(() => _context.Person);
+        public async Task<Person> FindAsync(int id) => await Task.Run(() => _context.Person.FindAsync(id));
     }
 }
