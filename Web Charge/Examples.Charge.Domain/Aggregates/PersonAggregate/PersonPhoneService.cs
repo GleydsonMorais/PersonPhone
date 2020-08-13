@@ -120,5 +120,30 @@ namespace Examples.Charge.Domain.Aggregates.PersonAggregate
                 return "Number field cannot be empty!";
             }
         }
+
+        public async Task<string> DeletePhoneNumberAsync(int personId, string number, int phoneNumberTypeId)
+        {
+            if (!string.IsNullOrEmpty(number))
+            {
+                var listPersonPhone = await _personPhoneRepository.FindAllAsync();
+                var personPhone = listPersonPhone.SingleOrDefault(x => x.BusinessEntityID == personId && x.PhoneNumber == number && x.PhoneNumberTypeID == phoneNumberTypeId);
+                if (personPhone != null)
+                {
+                    var result = await _personPhoneRepository.DeleteAsync(personPhone);
+                    if (result)
+                        return "Successfully delete";
+                    else
+                        return "Error, try again!";
+                }
+                else
+                {
+                    return "Register not found!";
+                }
+            }
+            else
+            {
+                return "Number field cannot be empty!";
+            }
+        }
     }
 }

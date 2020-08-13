@@ -40,7 +40,7 @@ namespace Examples.Charge.Infra.Data.Repositories
             try
             {
                 _context.Remove(oldPersonPhone);
-                _context.Update(newPersonPhone);
+                await _context.AddAsync(newPersonPhone);
                 await _context.SaveChangesAsync();
 
                 return true;

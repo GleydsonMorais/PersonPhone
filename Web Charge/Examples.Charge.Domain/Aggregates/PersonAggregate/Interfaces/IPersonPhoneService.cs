@@ -13,5 +13,6 @@ namespace Examples.Charge.Domain.Aggregates.PersonAggregate.Interfaces
         Task<List<PersonPhoneViewModel>> GetListPersonPhoneAsync(int id);
         Task<string> InsertPhoneNumberAsync(InsertPersonPhoneViewModel model);
         Task<string> EditPhoneNumberAsync(string oldNumber ,EditPersonPhoneViewModel model);
+        Task<string> DeletePhoneNumberAsync(int personId, string number, int phoneNumberTypeId);
     }
 }

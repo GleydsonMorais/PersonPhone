@@ -41,10 +41,8 @@ namespace Examples.Charge.API.Controllers
         [HttpPut("{oldNumber}")]
         public async Task<string> Put(string oldNumber, [FromBody] EditPersonPhoneViewModel model) => await _personPhoneService.EditPhoneNumberAsync(oldNumber, model);
 
-        //// DELETE: api/ApiWithActions/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        // DELETE: api/ApiWithActions/5
+        [HttpDelete("{personId}/{number}/{phoneNumberTypeId}")]
+        public async Task<string> Delete(int personId, string number, int phoneNumberTypeId) => await _personPhoneService.DeletePhoneNumberAsync(personId, number, phoneNumberTypeId);
     }
 }
